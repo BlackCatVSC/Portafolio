@@ -1,41 +1,39 @@
 /* =====================================================
-   Styles.css es el ARMARIO (el ropero) de la página:
-   aquí elegimos los colores, las formas, las letras y
-   todo lo que hace que la página se vea bonita.
+   Styles.css
+   Hoja de estilos del portafolio: paleta de colores,
+   tipografías, layout, componentes y diseño responsivo.
    ===================================================== */
 
-/* LA PALETA DE PINTURA
-   Aquí guardamos todos los colores en un solo lugar, como los
-   lápices de una caja. Si algún día queremos cambiar el color
-   de toda la página, ¡solo cambiamos una línea de aquí! */
+/* Variables globales del tema.
+   Centralizar colores, radios y fuentes en :root permite
+   modificar la apariencia de todo el sitio desde un solo lugar. */
 :root {
-  --bg: #05060f;              /* El fondo de toda la página (azul muy oscuro) */
-  --bg-alt: #0a0c1c;          /* Un fondo un poquito distinto, para separar secciones */
-  --card: #10132a;            /* El color de las tarjetas */
-  --card-soft: #151936;       /* Un color de tarjeta más clarito */
-  --border: rgba(148, 163, 255, 0.14); /* Los bordes de las tarjetas, casi invisibles */
-  --accent: #7c6cf5;          /* ¡El color estrella! El morado de botones y detalles */
-  --accent-soft: #a78bfa;     /* Un morado más suave */
-  --text: #e8eaf3;            /* El color de las letras principales */
-  --muted: #9aa1b8;           /* El color de las letras secundarias (más gris) */
-  --radius: 16px;             /* Qué tan redonditas son las esquinas de las tarjetas */
-  --font-head: "Sora", sans-serif;  /* La letra de los títulos */
-  --font-body: "Inter", sans-serif; /* La letra de los textos */
-  --font-mono: "JetBrains Mono", monospace; /* Letra estilo máquina de escribir */
+  --bg: #05060f;              /* Fondo base de la página */
+  --bg-alt: #0a0c1c;          /* Fondo alternativo para alternar entre secciones */
+  --card: #10132a;            /* Fondo de las tarjetas */
+  --card-soft: #151936;       /* Variante clara para chips y elementos internos */
+  --border: rgba(148, 163, 255, 0.14); /* Bordes sutiles de las tarjetas */
+  --accent: #7c6cf5;          /* Color principal de acento */
+  --accent-soft: #a78bfa;     /* Acento secundario, más claro */
+  --text: #e8eaf3;            /* Color del texto principal */
+  --muted: #9aa1b8;           /* Color del texto secundario */
+  --radius: 16px;             /* Radio de borde estándar de las tarjetas */
+  --font-head: "Sora", sans-serif;  /* Tipografía para encabezados */
+  --font-body: "Inter", sans-serif; /* Tipografía para el cuerpo del texto */
+  --font-mono: "JetBrains Mono", monospace; /* Tipografía monoespaciada */
 }
 
-/* EL GRAN REINICIO
-   Los navegadores agregan espacios extra por su cuenta.
-   Aquí los borramos todos, como limpiar la mesa antes de dibujar. */
+/* Reinicio de estilos: elimina márgenes y rellenos por defecto
+   del navegador y aplica box-sizing: border-box globalmente
+   para que los tamaños incluyan borde y relleno. */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Cuando tocas un botón del menú, la página baja SUAVEMENTE
-   en vez de saltar de golpe. Y dejamos 90 píxeles de espacio
-   arriba para que la barra del menú no tape los títulos. */
+/* Desplazamiento suave entre anclas y margen superior de
+   compensación para que la barra fija no cubra los títulos. */
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
-/* El "cuerpo" de la página: fondo oscuro, letra Inter,
-   buen espacio entre líneas y sin scroll hacia los lados. */
+/* Estilo base del documento: fondo oscuro, tipografía Inter,
+   interlineado amplio y sin desbordamiento horizontal. */
 body {
   background: var(--bg);
   color: var(--text);
@@ -45,60 +43,56 @@ body {
   overflow-x: hidden;
 }
 
-/* Los títulos usan la letra Sora */
+/* Los encabezados utilizan la tipografía Sora */
 h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; }
 
-/* Los enlaces no llevan el subrayado típico ni cambian de color */
+/* Los enlaces heredan el color del texto y no muestran subrayado */
 a { color: inherit; text-decoration: none; }
 
-/* Las listas no muestran los puntitos de siempre */
+/* Las listas ocultan los marcadores predeterminados */
 ul { list-style: none; }
 
-/* Las imágenes nunca se salen de su caja */
+/* Las imágenes se adaptan a su contenedor sin desbordarse */
 img { max-width: 100%; display: block; }
 
-/* EL MOLDE: todas las secciones usan esta caja invisible de
-   máximo 1140 píxeles, centrada, para que el texto no quede
-   demasiado estirado en pantallas gigantes. */
+/* Contenedor central: limita el ancho a 1140 px y centra el
+   contenido para mantener una medida de línea legible. */
 .container { width: min(1140px, 92%); margin-inline: auto; }
 
-/* Cada sección tiene este espacio (aire) arriba y abajo */
+/* Separación vertical estándar de cada sección */
 .section { padding: 96px 0; }
 
-/* Algunas secciones tienen un fondo un poquito distinto,
-   como páginas de distinto color en un cuaderno */
+/* Variantes de sección con fondo alternativo para diferenciar bloques */
 .section-alt { background: var(--bg-alt); }
 
-/* La palabra "Luciano" en la portada va en morado suave */
+/* Texto de acento utilizado en el encabezado principal */
 .accent { color: var(--accent-soft); }
 
-/* LOS STICKERS (badges)
-   Las pequeñas etiquetas redondas que aparecen arriba de cada
-   sección, como "Sobre mí" o "Habilidades". Son como stickers
-   morados pegados en un cuaderno. */
+/* Etiqueta de sección (badge): píldora pequeña en mayúsculas
+   que identifica cada bloque de contenido. */
 .badge {
   display: inline-block;
   padding: 6px 14px;
-  border-radius: 999px; /* 999 píxeles = esquinas totalmente redondas */
+  border-radius: 999px; /* Valor alto para obtener una forma de píldora */
   background: rgba(124, 108, 245, 0.14);
   border: 1px solid rgba(124, 108, 245, 0.35);
   color: var(--accent-soft);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.14em;
-  text-transform: uppercase; /* Siempre en MAYÚSCULAS */
+  text-transform: uppercase;
   margin-bottom: 18px;
 }
 
-/* El título de cada sección va centrado */
+/* Encabezado centrado de las secciones */
 .section-head { text-align: center; margin-bottom: 56px; }
 
-/* "clamp" = letra que crece con la pantalla, pero sin pasarse */
+/* Tamaño de fuente fluido: escala con el ancho de la pantalla
+   dentro de los límites definidos por clamp(). */
 .section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
 
-/* LOS BOTONES
-   La forma base de todos los botones de la página.
-   "transition" hace que se muevan suavecito cuando algo cambia. */
+/* Botones: estilo base compartido por todos los botones del sitio.
+   La propiedad transition suaviza los cambios de estado. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -108,26 +102,25 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 0.95rem;
   border: 1px solid transparent;
-  cursor: pointer; /* El mouse se convierte en una manito */
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-/* El pequeño dibujo (flecha) que llevan los botones dentro */
+/* Icono SVG dentro de los botones */
 .btn svg { width: 16px; height: 16px; }
 
-/* BOTÓN PRINCIPAL: morado brillante con sombra.
-   Es el que más llama la atención. */
+/* Botón principal: degradado de acento con sombra destacada */
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), #9a6cf5);
   color: #fff;
   box-shadow: 0 8px 24px rgba(124, 108, 245, 0.35);
 }
 
-/* ":hover" significa "cuando pones el mouse encima".
-   ¡El botón se eleva 2 píxeles, como si saltara! */
+/* Estado hover del botón principal: se eleva ligeramente
+   y aumenta la intensidad de la sombra */
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(124, 108, 245, 0.45); }
 
-/* BOTÓN FANTASMA: transparente, solo con borde. Más discreto. */
+/* Botón secundario: transparente con borde, menor jerarquía visual */
 .btn-ghost {
   background: transparent;
   border-color: var(--border);
@@ -136,48 +129,46 @@ img { max-width: 100%; display: block; }
 
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent-soft); transform: translateY(-2px); }
 
-/* La versión pequeña del botón (la del menú de arriba) */
+/* Variante compacta del botón, utilizada en la barra de navegación */
 .btn-sm { padding: 9px 18px; font-size: 0.85rem; }
 
 /* =====================================================
-   LA BARRA DE ARRIBA (EL MENÚ)
+   BARRA DE NAVEGACIÓN
    ===================================================== */
 
-/* La barra está "pegada" arriba (position: fixed): no se mueve
-   aunque bajes por la página. Es semi-transparente y con "blur"
-   detrás, como un vidrio empañado. */
+/* Barra fija en la parte superior con fondo semitransparente
+   y efecto de desenfoque (backdrop-filter). */
 .nav {
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 100; /* z-index alto = siempre encima de todo lo demás */
+  z-index: 100; /* Valor alto para mantenerla sobre el resto del contenido */
   background: rgba(5, 6, 15, 0.75);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-/* Esta clase la agrega app.js cuando haces scroll:
-   la barra se pone más oscura y le sale una línea debajo. */
+/* Estado aplicado por app.js al hacer scroll:
+   fondo más opaco y borde inferior visible. */
 .nav.scrolled { border-bottom-color: var(--border); background: rgba(5, 6, 15, 0.92); }
 
-/* Acomoda logo, botones y acciones en una sola fila */
+/* Distribución interna: logo, enlaces y acciones en una sola fila */
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
 
-/* El logo "BlackCatVSC" */
+/* Logo del sitio */
 .logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; }
 
 .logo svg { width: 26px; height: 26px; color: var(--accent-soft); }
 
 .logo-accent { color: var(--accent-soft); }
 
-/* La fila de botones del menú */
+/* Fila de enlaces del menú */
 .nav-links { display: flex; gap: 30px; }
 
 .nav-link { position: relative; font-size: 0.92rem; color: var(--muted); font-weight: 500; transition: color 0.2s ease; }
 
-/* El truco de la rayita: cada botón tiene una línea morada
-   invisible debajo (width: 0). Al pasar el mouse o al estar
-   en esa sección, la línea crece hasta el ancho completo. */
+/* Indicador inferior de sección activa: línea de acento que
+   se expande al hacer hover o al estar en la sección correspondiente. */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -196,15 +187,14 @@ img { max-width: 100%; display: block; }
 
 .nav-actions { display: flex; align-items: center; gap: 14px; }
 
-/* El botón hamburguesa: en computadores está ESCONDIDO (display: none),
-   solo aparece en celulares. */
+/* Botón hamburguesa: oculto en escritorio, visible solo en móviles */
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
 
-/* Las tres rayitas del botón */
+/* Líneas del botón hamburguesa */
 .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
 
-/* Cuando el menú está abierto, las rayitas se transforman en una X:
-   la primera gira, la del medio desaparece y la tercera gira al otro lado. */
+/* Animación de apertura: las líneas se transforman en una X
+   cuando el menú móvil está abierto. */
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
@@ -212,14 +202,13 @@ img { max-width: 100%; display: block; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* =====================================================
-   LA PORTADA (HERO)
+   SECCIÓN DE INICIO (hero)
    ===================================================== */
 
 .hero { padding: 170px 0 110px; position: relative; overflow: hidden; }
 
-/* Un brillo morado gigante de adorno, escondido detrás de la
-   esquina superior derecha. "pointer-events: none" significa
-   que el mouse lo atraviesa como si fuera un fantasma. */
+/* Resplandor decorativo de fondo; pointer-events: none evita
+   que interfiera con las interacciones del usuario. */
 .hero::before {
   content: "";
   position: absolute;
@@ -231,11 +220,10 @@ img { max-width: 100%; display: block; }
   pointer-events: none;
 }
 
-/* Divide la portada en dos columnas: texto a la izquierda,
-   foto a la derecha. */
+/* Distribución en dos columnas: contenido textual y foto de perfil */
 .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
 
-/* El título gigante */
+/* Título principal con tamaño fluido */
 .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); font-weight: 800; margin-bottom: 22px; }
 
 .hero-text { color: var(--muted); max-width: 520px; margin-bottom: 32px; }
@@ -244,11 +232,11 @@ img { max-width: 100%; display: block; }
 
 .hero-tech-title { display: block; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
 
-/* LAS MEDALLAS DE TECNOLOGÍAS */
+/* Insignias de tecnologías del hero */
 .tech-badges { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* Cada medalla es un cuadradito. El color "var(--tech)" llega
-   desde el HTML: cada tecnología trae su propio color de marca. */
+/* Cada insignia recibe su color mediante la variable --tech
+   definida en línea desde el HTML. */
 .tech-badge {
   width: 44px;
   height: 44px;
@@ -264,13 +252,13 @@ img { max-width: 100%; display: block; }
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Al pasar el mouse, la medalla salta 4 píxeles */
+/* Estado hover: elevación sutil y borde del color de la marca */
 .tech-badge:hover { transform: translateY(-4px); border-color: var(--tech); }
 
 .hero-visual { position: relative; display: grid; place-items: center; min-height: 420px; }
 
-/* EL CÍRCULO DE LA FOTO: "aspect-ratio: 1" lo hace perfectamente
-   redondo, y el degradado morado se ve cuando todavía no hay foto. */
+/* Contenedor circular de la foto de perfil.
+   El degradado se muestra como respaldo mientras no hay imagen. */
 .hero-photo {
   width: min(360px, 80vw);
   aspect-ratio: 1;
@@ -282,10 +270,10 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 30px 80px rgba(76, 62, 201, 0.45);
 }
 
-/* La foto llena el círculo sin deformarse */
+/* La imagen cubre el círculo sin deformarse (object-fit: cover) */
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Las letras gigantes "LG" que se ven si no hay foto */
+/* Iniciales mostradas cuando la foto de perfil no está disponible */
 .hero-initials { font-family: var(--font-head); font-size: 6rem; font-weight: 800; color: rgba(255, 255, 255, 0.92); letter-spacing: 0.04em; }
 
 /* =====================================================
@@ -298,7 +286,7 @@ img { max-width: 100%; display: block; }
 
 .about-text p { color: var(--muted); margin-bottom: 16px; }
 
-/* Las palabras en negrita se ven más claras para resaltar */
+/* El texto en negrita utiliza el color principal para resaltar */
 .about-text strong { color: var(--text); }
 
 .about-list { margin-top: 26px; display: grid; gap: 14px; }
@@ -307,7 +295,7 @@ img { max-width: 100%; display: block; }
 
 .about-list svg { width: 20px; height: 20px; color: var(--accent-soft); flex-shrink: 0; }
 
-/* LAS TARJETAS DE LOGROS (los números del videojuego) */
+/* Cuadrícula de tarjetas de logros */
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
 .stat-card {
@@ -321,10 +309,10 @@ img { max-width: 100%; display: block; }
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-/* Al pasar el mouse, la tarjeta se eleva y su borde brilla morado */
+/* Estado hover: elevación y borde destacado */
 .stat-card:hover { transform: translateY(-4px); border-color: rgba(124, 108, 245, 0.5); }
 
-/* El cuadradito morado con el dibujo (icono) de cada logro */
+/* Contenedor del icono de cada logro */
 .stat-icon {
   width: 46px;
   height: 46px;
@@ -338,17 +326,17 @@ img { max-width: 100%; display: block; }
 
 .stat-icon svg { width: 22px; height: 22px; }
 
-/* El número grande, como "+200" */
+/* Indicador numérico principal de cada tarjeta */
 .stat-card strong { display: block; font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 4px; }
 
-/* La explicación pequeña debajo del número */
+/* Descripción secundaria del indicador */
 .stat-card span { color: var(--muted); font-size: 0.85rem; }
 
 /* =====================================================
-   SECCIÓN HABILIDADES (las categorías de poderes)
+   SECCIÓN HABILIDADES
    ===================================================== */
 
-/* Las tarjetas se ordenan en 3 columnas */
+/* Cuadrícula de tarjetas de habilidades en tres columnas */
 .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 
 .skill-card {
@@ -363,8 +351,7 @@ img { max-width: 100%; display: block; }
 
 .skill-card h3 { font-size: 1rem; margin-bottom: 16px; color: var(--accent-soft); }
 
-/* LOS CHIPS: las etiquetas redonditas con cada habilidad,
-   como los stickers de un álbum. */
+/* Chips: etiquetas pequeñas para cada tecnología o habilidad */
 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .chip {
@@ -378,7 +365,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* =====================================================
-   SECCIÓN PROYECTOS (los mejores dibujos al refrigerador)
+   SECCIÓN PROYECTOS
    ===================================================== */
 
 .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
@@ -393,34 +380,33 @@ img { max-width: 100%; display: block; }
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Al pasar el mouse, la tarjeta salta y deja una sombra grande,
-   como si se despegara de la pantalla. */
+/* Estado hover: elevación y sombra pronunciada */
 .project-card:hover { transform: translateY(-6px); border-color: rgba(124, 108, 245, 0.55); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
 
-/* La "portada" de colores de cada proyecto */
+/* Cabecera visual de cada proyecto */
 .project-cover { position: relative; height: 190px; display: grid; place-items: center; }
 
 .project-cover svg { width: 72px; height: 72px; color: rgba(255, 255, 255, 0.85); }
 
-/* Portada morada para el proyecto de inteligencia artificial */
+/* Variante de color para el proyecto de inteligencia artificial */
 .cover-ai { background: linear-gradient(135deg, #4c3ec9, #7c6cf5 60%, #a78bfa); }
 
-/* Portada verde para MyMarket (¡los colores de una frutería!) */
+/* Variante de color para MyMarket (tonos verdes) */
 .cover-market { background: linear-gradient(135deg, #0f5132, #198754 60%, #2fb380); }
 
-/* El número "01" o "02" en la esquina de la portada */
+/* Numeración del proyecto en la cabecera */
 .project-num { position: absolute; top: 16px; left: 20px; font-family: var(--font-head); font-weight: 800; font-size: 1rem; color: rgba(255, 255, 255, 0.85); }
 
 .project-body { padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 
 .project-body h3 { font-size: 1.25rem; }
 
-/* La nota pequeña en cursiva (aclara que es un proyecto de estudio) */
+/* Nota aclaratoria sobre el contexto del proyecto */
 .project-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: -6px; }
 
 .project-body > p:not(.project-note) { color: var(--muted); font-size: 0.93rem; }
 
-/* Las etiquetas de tecnologías del proyecto */
+/* Etiquetas de tecnologías del proyecto */
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .project-tags li {
@@ -433,8 +419,8 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
 }
 
-/* El enlace "Ver código". "margin-top: auto" lo empuja siempre
-   al fondo de la tarjeta, para que todas queden ordenadas. */
+/* Enlace al repositorio; margin-top: auto lo ancla al fondo
+   de la tarjeta para alinear todas las tarjetas. */
 .project-link {
   margin-top: auto;
   display: inline-flex;
@@ -448,17 +434,17 @@ img { max-width: 100%; display: block; }
 
 .project-link svg { width: 15px; height: 15px; }
 
-/* En hover la flechita se estira: ¡parece que te invita a hacer clic! */
+/* En hover el enlace cambia de color y amplía el espacio del icono */
 .project-link:hover { color: var(--accent-soft); gap: 12px; }
 
 /* =====================================================
-   SECCIÓN EXPERIENCIA (la línea de tiempo de la aventura)
+   SECCIÓN EXPERIENCIA (línea de tiempo)
    ===================================================== */
 
 .timeline { max-width: 760px; margin-inline: auto; position: relative; padding-left: 34px; }
 
-/* La línea vertical morada que une todos los hitos,
-   dibujada con el truco del "::before". Se desvanece hacia abajo. */
+/* Línea vertical que une los hitos, generada con ::before
+   y con degradado hacia transparente. */
 .timeline::before {
   content: "";
   position: absolute;
@@ -473,7 +459,7 @@ img { max-width: 100%; display: block; }
 
 .timeline-item:last-child { padding-bottom: 0; }
 
-/* El puntito morado de cada hito, con un halo de luz alrededor */
+/* Indicador circular de cada hito, con halo de color */
 .timeline-dot {
   position: absolute;
   left: -32px;
@@ -493,7 +479,7 @@ img { max-width: 100%; display: block; }
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
-/* En hover la tarjeta se desliza un poquito a la derecha */
+/* En hover la tarjeta se desplaza levemente hacia la derecha */
 .timeline-card:hover { border-color: rgba(124, 108, 245, 0.5); transform: translateX(4px); }
 
 .timeline-date { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-soft); }
@@ -505,7 +491,7 @@ img { max-width: 100%; display: block; }
 .timeline-card p { color: var(--muted); font-size: 0.92rem; }
 
 /* =====================================================
-   SECCIÓN CONTACTO (el cartel con los datos)
+   SECCIÓN CONTACTO
    ===================================================== */
 
 .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
@@ -514,7 +500,7 @@ img { max-width: 100%; display: block; }
 
 .contact-cta p { color: var(--muted); margin-bottom: 30px; max-width: 480px; }
 
-/* La tarjeta con el correo, el teléfono y el GitHub */
+/* Tarjeta con los datos de contacto directo */
 .contact-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -532,50 +518,43 @@ img { max-width: 100%; display: block; }
 
 .contact-list a { transition: color 0.2s ease; word-break: break-all; }
 
-/* Al pasar el mouse por un dato de contacto, se pone morado */
+/* En hover los datos de contacto adoptan el color de acento */
 .contact-list a:hover { color: var(--accent-soft); }
 
 /* =====================================================
-   EL PIE DE PÁGINA (el final del cuento)
+   PIE DE PÁGINA
    ===================================================== */
 
 .footer { border-top: 1px solid var(--border); padding: 26px 0; background: var(--bg-alt); }
 
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 0.88rem; flex-wrap: wrap; }
 
-/* El enlace "Volver arriba" */
+/* Enlace para volver al inicio */
 .footer-top { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-weight: 500; transition: color 0.2s ease; }
 
 .footer-top svg { width: 15px; height: 15px; }
 
 .footer-top:hover { color: var(--accent-soft); }
 
-/* =====================================================
-   EL TRUCO DE MAGIA: las tarjetas aparecen suavemente
-   cuando llegan a la pantalla. app.js agrega la clase
-   "visible" en el momento justo.
-   ===================================================== */
-
-/* Estado inicial: invisible y agachada 28 píxeles hacia abajo */
+/* Animaciones de aparición: los elementos con la clase .reveal
+   comienzan ocultos y se muestran cuando app.js agrega la clase
+   .visible al entrar en el viewport. */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
 
-/* Estado final: ¡aparece y se pone en su lugar! */
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* =====================================================
-   LAS REGLAS DE TRANSFORMACIÓN (media queries)
-   Cuando la pantalla es pequeña (celular o tablet), la página
-   se transforma para caber bien, como un robot que se encoge.
+   DISEÑO RESPONSIVO (media queries)
    ===================================================== */
 
-/* Pantallas menores a 980 píxeles: todo más apretado */
+/* Pantallas de hasta 980 px: columnas a una sola vía y
+   menú de navegación convertido en panel desplegable. */
 @media (max-width: 980px) {
   .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .hero { padding-top: 140px; }
   .hero-visual { min-height: 0; margin-top: 10px; }
   .skills-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  /* El menú se convierte en un panel escondido arriba.
-     Con translateY(-130%) está fuera de la pantalla... */
+  /* Menú móvil: oculto fuera de pantalla mediante translateY */
   .nav-links {
     position: fixed;
     top: 76px;
@@ -589,22 +568,22 @@ img { max-width: 100%; display: block; }
     transform: translateY(-130%);
     transition: transform 0.35s ease;
   }
-  /* ...y con la clase "open" (que pone app.js) baja deslizándose */
+  /* La clase .open, aplicada por app.js, muestra el panel */
   .nav-links.open { transform: translateY(0); }
   .nav-link { padding: 13px 6%; }
   .nav-link::after { display: none; }
-  .nav-toggle { display: flex; } /* ¡Aquí aparece el botón hamburguesa! */
+  .nav-toggle { display: flex; } /* Botón hamburguesa visible */
 }
 
-/* Celulares pequeños: TODO en una sola columna */
+/* Pantallas de hasta 640 px: todo el contenido en una columna */
 @media (max-width: 640px) {
   .skills-grid, .projects-grid, .stats-grid { grid-template-columns: 1fr; }
   .section { padding: 72px 0; }
-  .nav-actions .btn-sm { display: none; } /* Escondemos el botón "Contáctame" para ahorrar espacio */
+  .nav-actions .btn-sm { display: none; } /* Se oculta el botón de contacto por espacio */
 }
 
-/* REGLA DE RESPETO: si el usuario le dijo a su computador
-   "no me gustan las animaciones", aquí las apagamos todas. */
+/* Accesibilidad: respeta la preferencia del usuario de reducir
+   el movimiento, desactivando animaciones y transiciones. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }

@@ -1,36 +1,36 @@
 // =====================================================
-// app.js es el CEREBRO de la página.
-// El HTML es el esqueleto, el CSS es la ropa...
-// y este archivo es el que reacciona cuando tocas algo.
+// app.js
+// Lógica de interactividad del portafolio: navegación con
+// resaltado según la sección visible, menú móvil, animaciones
+// de aparición, carga de la foto de perfil y año dinámico.
 // =====================================================
 
-// Todo el código vive dentro de una "caja mágica" que se abre
-// sola apenas se carga la página. Así nada se mezcla con otros códigos.
+// IIFE (función autoejecutable): encapsula todo el código en un
+// ámbito local para evitar variables globales y conflictos con
+// otros scripts. Se ejecuta inmediatamente tras cargarse el archivo.
 (function () {
-  // Primero buscamos las piezas de la página que vamos a controlar,
-  // como cuando eliges tus juguetes antes de jugar.
-  var nav = document.getElementById("nav"); // La barra de arriba
-  var navLinks = document.getElementById("nav-links"); // La lista de botones del menú
-  var navToggle = document.getElementById("nav-toggle"); // El botón de las tres rayitas
-  var links = Array.prototype.slice.call(document.querySelectorAll(".nav-link")); // Todos los botones del menú
-  var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]")); // Todas las secciones
+  // Referencias a los elementos del DOM que controla este script
+  var nav = document.getElementById("nav"); // Barra de navegación superior
+  var navLinks = document.getElementById("nav-links"); // Contenedor de los enlaces del menú
+  var navToggle = document.getElementById("nav-toggle"); // Botón hamburguesa (móvil)
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav-link")); // Todos los enlaces del menú
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]")); // Secciones con identificador
 
-  // Esta función corre cada vez que subes o bajas por la página (hacer scroll)
+  // Se ejecuta en cada evento de scroll: actualiza el estado de la
+  // barra de navegación y resalta el enlace de la sección visible.
   function onScroll() {
-    // Si ya bajaste más de 20 píxeles, le ponemos la etiqueta
-    // "scrolled" a la barra de arriba y el CSS la ve más oscura.
-    // Si vuelves arriba, se la quitamos.
+    // Al superar los 20 px de desplazamiento, agrega la clase "scrolled"
+    // para oscurecer la barra (ver Styles.css). La remueve al volver arriba.
     if (window.scrollY > 20) {
       nav.classList.add("scrolled");
     } else {
       nav.classList.remove("scrolled");
     }
 
-    // Aquí descubrimos qué sección estás mirando ahora mismo
-    // y encendemos el botón del menú que le corresponde,
-    // como una lucecita que dice "estás aquí".
+    // Determina la sección actualmente visible y marca su enlace
+    // correspondiente con la clase "active".
     var current = sections[0];
-    var pos = window.scrollY + 140; // 140 píxeles extra por la barra que tapa un poco
+    var pos = window.scrollY + 140; // Compensación por la altura de la barra fija
     sections.forEach(function (section) {
       if (section.offsetTop <= pos) {
         current = section;
@@ -41,19 +41,20 @@
     });
   }
 
-  // Le decimos a la página: "¡Avísame cada vez que el usuario suba o baje!"
+  // Registra el listener de scroll (passive mejora el rendimiento)
+  // y ejecuta una primera actualización para el estado inicial.
   window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll(); // También la llamamos al tiro, por si la página parte más abajo
+  onScroll();
 
-  // Cuando tocas el botón de las rayitas (☰), el menú del celular
-  // se abre o se cierra, como una puerta.
+  // Alterna la apertura/cierre del menú móvil al pulsar el botón
+  // hamburguesa, sincronizando las clases y el atributo aria-expanded.
   navToggle.addEventListener("click", function () {
     var open = navLinks.classList.toggle("open");
     navToggle.classList.toggle("open", open);
     navToggle.setAttribute("aria-expanded", open ? "true" : "false");
   });
 
-  // Cuando eliges un botón del menú, la puerta se cierra solita.
+  // Cierra el menú móvil automáticamente al seleccionar un enlace.
   links.forEach(function (link) {
     link.addEventListener("click", function () {
       navLinks.classList.remove("open");
@@ -63,42 +64,38 @@
   });
 
   // =====================================================
-  // LAS ANIMACIONES DE APARICIÓN
-  // ¿Viste que las tarjetas aparecen suavemente cuando
-  // llegas a ellas? Esto es lo que lo hace.
+  // Animaciones de aparición
+  // IntersectionObserver detecta cuando un elemento entra en el
+  // viewport y le agrega la clase "visible" para animar su entrada.
   // =====================================================
-  // Creamos un "vigilante" que mira la pantalla. Cuando una tarjeta
-  // asoma un poquito (el 15%), le da permiso para aparecer
-  // y deja de mirarla, para no repetir la animación.
   var revealObserver = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible"); // ¡Aparece!
-          revealObserver.unobserve(entry.target); // Ya no la miro más
+          entry.target.classList.add("visible"); // Muestra el elemento
+          revealObserver.unobserve(entry.target); // Deja de observarlo para no repetir la animación
         }
       });
     },
-    { threshold: 0.15 } // "threshold" significa: avísame cuando se vea el 15%
+    { threshold: 0.15 } // Se activa cuando el 15% del elemento es visible
   );
-  // Ponemos a todas las tarjetas con clase "reveal" bajo vigilancia
+  // Registra todos los elementos con clase .reveal
   document.querySelectorAll(".reveal").forEach(function (el) {
     revealObserver.observe(el);
   });
 
   // =====================================================
-  // LA FOTO DE LUCIANO
+  // Carga de la foto de perfil
+  // Intenta cargar la imagen probando varios nombres de archivo.
+  // Si ninguno existe, se conservan las iniciales como respaldo.
   // =====================================================
-  // A veces una foto puede tener nombres distintos. Aquí probamos
-  // con varios, uno por uno, como cuando buscas un juguete:
-  // si aparece, ¡lo mostramos! Si no, buscamos en el siguiente lugar.
   var photo = document.getElementById("hero-photo");
   var candidates = ["FotoPerfil.jpeg", "foto.jpg", "foto.jpeg", "foto.png", "foto.webp"];
   function tryPhoto(index) {
-    if (index >= candidates.length) return; // Ya buscamos en todos lados
-    var probe = new Image(); // Una imagen de prueba, invisible todavía
+    if (index >= candidates.length) return; // Ningún candidato disponible
+    var probe = new Image(); // Imagen de prueba precargada en memoria
     probe.onload = function () {
-      // ¡La foto existe! La ponemos en el círculo y borramos las iniciales
+      // Archivo encontrado: se inserta la imagen y se eliminan las iniciales
       var img = document.createElement("img");
       img.src = candidates[index];
       img.alt = "Retrato de Luciano Garrido";
@@ -106,13 +103,13 @@
       photo.appendChild(img);
     };
     probe.onerror = function () {
-      tryPhoto(index + 1); // No estaba aquí, probamos con el siguiente nombre
+      tryPhoto(index + 1); // Archivo no disponible: prueba el siguiente candidato
     };
     probe.src = candidates[index];
   }
-  tryPhoto(0); // Empezamos a buscar desde el primer nombre
+  tryPhoto(0); // Inicia la búsqueda desde el primer candidato
 
-  // Ponemos el año actual en el pie de página para que nunca
-  // quede viejo. ¡Como un reloj que se ajusta solo!
+  // Actualiza el año del pie de página con el año actual,
+  // evitando que la información quede desactualizada.
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

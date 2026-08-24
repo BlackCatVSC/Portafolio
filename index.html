@@ -1,48 +1,47 @@
-<!-- ¡Hola! Este archivo es el ESQUELETO de la página web.
-     Aquí está todo lo que se ve: textos, botones y secciones.
-     Está escrito en HTML, el idioma que entienden los navegadores. -->
+<!-- index.html
+     Estructura principal del portafolio de Luciano Garrido.
+     Define el marcado semántico de todas las secciones visibles:
+     navegación, presentación, habilidades, proyectos, experiencia y contacto.
+     Los estilos se delegan en Styles.css y la interactividad en app.js. -->
 
-<!-- Le dice al navegador: "esto es una página web moderna" -->
+<!-- Declaración del tipo de documento HTML5 -->
 <!DOCTYPE html>
-<!-- Empieza la página. lang="es" significa que está en español -->
+<!-- Elemento raíz del documento; lang="es" indica que el contenido está en español -->
 <html lang="es">
-<!-- El <head> es como la mochila: guarda instrucciones importantes
-     que NO se ven en la pantalla -->
+<!-- <head>: metadatos y recursos externos del documento (no se renderizan en pantalla) -->
 <head>
-  <!-- Permite usar tildes y la letra ñ sin que se vean raras -->
+  <!-- Codificación UTF-8 para soportar acentos y caracteres especiales (ñ, tildes) -->
   <meta charset="UTF-8">
-  <!-- Hace que la página se vea bien en celulares y tablets -->
+  <!-- Configuración del viewport para una correcta adaptación en dispositivos móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Un resumen de la página que Google muestra cuando alguien busca -->
+  <!-- Descripción de la página, utilizada por los buscadores en los resultados -->
   <meta name="description" content="Portafolio de Luciano Garrido, estudiante de Ingeniería en Informática en Duoc UC. Backend, bases de datos e inteligencia artificial.">
-  <!-- El nombre que aparece arriba, en la pestaña del navegador -->
+  <!-- Título mostrado en la pestaña del navegador y en los resultados de búsqueda -->
   <title>Luciano Garrido | Ingeniería en Informática</title>
-  <!-- Aquí le pedimos a Google unas letras bonitas para la página
-       (Sora para los títulos e Inter para el texto) -->
+  <!-- Fuentes tipográficas de Google Fonts: Sora (títulos), Inter (texto) y JetBrains Mono (código) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Conectamos el archivo de ESTILOS: los colores, las formas
-       y todo lo que hace que la página se vea bonita -->
+  <!-- Hoja de estilos principal del sitio -->
   <link rel="stylesheet" href="Styles.css">
 </head>
-<!-- El <body> es TODO lo que sí se ve en la pantalla -->
+<!-- <body>: contenido visible de la página -->
 <body>
   <!-- ============================================================
-       LA BARRA DE ARRIBA (EL MENÚ)
-       Es como el control de un videojuego: siempre está arriba y
-       con un toque te lleva a cualquier parte de la página.
+       BARRA DE NAVEGACIÓN SUPERIOR
+       Permanece fija en la parte superior de la pantalla y
+       contiene el logo, el menú de secciones y las acciones
+       principales. En pantallas móviles incorpora un menú
+       desplegable controlado por app.js.
        ============================================================ -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
-      <!-- El logo. Si lo tocas, te lleva al GitHub de Luciano
-           (su cuaderno de proyectos) -->
+      <!-- Logo del perfil; enlaza al repositorio de GitHub -->
       <a href="https://github.com/BlackCatVSC" target="_blank" rel="noopener" class="logo" aria-label="Perfil de GitHub de Luciano Garrido">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
         <span>BlackCat<span class="logo-accent">VSC</span></span>
       </a>
-      <!-- Los botones del menú: cada uno es un teletransportador
-           que te lleva a una sección de la página -->
+      <!-- Menú de navegación principal; cada enlace apunta a una sección de la página -->
       <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
         <a href="#inicio" class="nav-link active">Inicio</a>
         <a href="#sobre-mi" class="nav-link">Sobre mí</a>
@@ -52,12 +51,11 @@
         <a href="#contacto" class="nav-link">Contacto</a>
       </nav>
       <div class="nav-actions">
-        <!-- Botón para ir directo a la parte de contacto -->
+        <!-- Acceso directo a la sección de contacto -->
         <a href="#contacto" class="btn btn-primary btn-sm">Contáctame
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
-        <!-- El botón de las tres rayitas: solo aparece en celulares
-             y sirve para abrir o cerrar el menú -->
+        <!-- Botón hamburguesa: solo visible en pantallas móviles; abre y cierra el menú -->
         <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -65,34 +63,35 @@
     </div>
   </header>
 
-  <!-- <main> guarda todo el contenido principal de la página -->
+  <!-- <main>: contenedor del contenido principal de la página -->
   <main>
     <!-- ============================================================
-         SECCIÓN 1: INICIO (llamada "hero")
-         Es la portada del libro: lo primero que ves al entrar.
+         SECCIÓN 1: INICIO (hero)
+         Primera vista del sitio: presentación, botones de acción
+         principales y tecnologías destacadas.
          ============================================================ -->
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="hero-content">
-          <!-- Una etiqueta (como un sticker) que dice qué estudia y dónde -->
+          <!-- Etiqueta informativa sobre la carrera y la institución -->
           <span class="badge">Ingeniería en Informática · Duoc UC</span>
-          <!-- El título GIGANTE con su nombre -->
+          <!-- Encabezado principal con el nombre y la propuesta de valor -->
           <h1>Hola, soy <span class="accent">Luciano</span><br>construyo soluciones con datos, backend e IA.</h1>
-          <!-- Un texto corto que cuenta quién es y qué sabe hacer -->
+          <!-- Resumen profesional breve -->
           <p class="hero-text">Estudiante de segundo año de Ingeniería en Informática en Duoc UC, con experiencia práctica en desarrollo backend, agentes de IA y arquitectura de microservicios. Futuro especialista en bases de datos.</p>
-          <!-- Los dos botones grandes de la portada -->
+          <!-- Llamadas a la acción principales -->
           <div class="hero-buttons">
-            <!-- Este botón te lleva a ver sus proyectos -->
+            <!-- Enlace hacia la sección de proyectos -->
             <a href="#proyectos" class="btn btn-primary">Ver mi trabajo
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </a>
-            <!-- Este botón descarga su currículum (como su ficha de personaje) -->
+            <!-- Descarga directa del currículum (archivo .docx) -->
             <a href="CV-Luciano-Garrido.docx" download class="btn btn-ghost">Descargar CV
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             </a>
           </div>
-          <!-- Las tecnologías que sabe usar, mostradas como medallas
-               de videojuego. Cada una tiene el color de su marca -->
+          <!-- Insignias de tecnologías; cada una recibe el color corporativo
+               de la marca mediante la variable CSS -tech definida en línea -->
           <div class="hero-tech">
             <span class="hero-tech-title">Tecnologías con las que trabajo</span>
             <ul class="tech-badges">
@@ -107,10 +106,9 @@
             </ul>
           </div>
         </div>
-        <!-- El círculo donde va su foto.
-             Dato curioso: el archivo app.js busca la foto probando
-             varios nombres. Si no la encuentra, deja estas iniciales
-             "LG" para que nunca se vea un espacio vacío -->
+        <!-- Contenedor circular para la foto de perfil.
+             app.js intenta cargarla probando varios nombres de archivo;
+             si no la encuentra, se muestran las iniciales como respaldo -->
         <div class="hero-visual">
           <div class="hero-photo" id="hero-photo">
             <span class="hero-initials">LG</span>
@@ -121,8 +119,8 @@
 
     <!-- ============================================================
          SECCIÓN 2: SOBRE MÍ
-         Aquí Luciano cuenta su historia, como el capítulo donde
-         conoces mejor al personaje principal.
+         Presentación profesional detallada y métricas destacadas
+         de logros académicos y laborales.
          ============================================================ -->
     <section class="section" id="sobre-mi">
       <div class="container about-grid">
@@ -131,6 +129,7 @@
           <h2>Apasionado por los datos y el backend</h2>
           <p>Curso segundo año de Ingeniería en Informática en Duoc UC y elegí especializarme en <strong>bases de datos</strong>. Disfruto resolver problemas reales con software: desde un agente de IA que simplifica transacciones bancarias hasta un sistema de microservicios que digitaliza el inventario de fruterías que aún trabajan en papel.</p>
           <p>Me mueven la matemática y la estadística, y las aplico para escribir código medible, testeado y seguro. En mi experiencia laboral en Duoc aprendí que la tecnología también es servicio: junto a un compañero recuperamos y formateamos más de 200 computadores que hoy usan escuelas que los necesitaban.</p>
+          <!-- Puntos clave del perfil profesional -->
           <ul class="about-list">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
@@ -146,8 +145,7 @@
             </li>
           </ul>
         </div>
-        <!-- Tarjetas con sus logros, como los números de un videojuego:
-             años de carrera, computadores recuperados, pruebas hechas... -->
+        <!-- Tarjetas de logros con indicadores cuantificables -->
         <div class="stats-grid">
           <div class="stat-card reveal">
             <div class="stat-icon">
@@ -179,9 +177,9 @@
 
     <!-- ============================================================
          SECCIÓN 3: HABILIDADES
-         Cada tarjeta es una categoría de "poderes": lenguajes,
-         inteligencia artificial, bases de datos... y cada chip
-         es una habilidad que domina.
+         Cada tarjeta agrupa una categoría de competencias
+         (lenguajes, backend, IA, DevOps, etc.) y cada chip
+         representa una tecnología o habilidad específica.
          ============================================================ -->
     <section class="section section-alt" id="habilidades">
       <div class="container">
@@ -232,8 +230,8 @@
 
     <!-- ============================================================
          SECCIÓN 4: PROYECTOS
-         Sus dos creaciones más grandes, como mostrar tus mejores
-         dibujos pegados en el refrigerador.
+         Proyectos más relevantes del portafolio, con descripción,
+         stack tecnológico y enlace al repositorio de código.
          ============================================================ -->
     <section class="section" id="proyectos">
       <div class="container">
@@ -242,8 +240,7 @@
           <h2>Trabajo reciente</h2>
         </div>
         <div class="projects-grid">
-          <!-- PROYECTO 1: un robot asistente de banco hecho con
-               inteligencia artificial -->
+          <!-- Proyecto 1: agente bancario basado en inteligencia artificial -->
           <article class="project-card reveal">
             <div class="project-cover cover-ai">
               <span class="project-num">01</span>
@@ -261,8 +258,7 @@
               </a>
             </div>
           </article>
-          <!-- PROYECTO 2: MyMarket, un sistema para ayudar a las
-               fruterías a dejar el papel y usar computadores -->
+          <!-- Proyecto 2: sistema de gestión de inventario para fruterías -->
           <article class="project-card reveal">
             <div class="project-cover cover-market">
               <span class="project-num">02</span>
@@ -286,8 +282,8 @@
 
     <!-- ============================================================
          SECCIÓN 5: EXPERIENCIA
-         Una línea de tiempo: como el camino de una aventura que
-         muestra todo lo que ha hecho, paso a paso.
+         Línea de tiempo con la trayectoria laboral y académica,
+         ordenada cronológicamente.
          ============================================================ -->
     <section class="section section-alt" id="experiencia">
       <div class="container">
@@ -329,8 +325,8 @@
 
     <!-- ============================================================
          SECCIÓN 6: CONTACTO
-         Como poner tu número en un cartel: aquí cualquiera puede
-         escribirle o llamarlo para trabajar juntos.
+         Información de contacto directo y llamada a la acción
+         para oportunidades laborales.
          ============================================================ -->
     <section class="section" id="contacto">
       <div class="container contact-grid">
@@ -342,6 +338,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
         </div>
+        <!-- Tarjeta con los datos de contacto: correo, teléfono, GitHub y ubicación -->
         <div class="contact-card reveal">
           <h3>Contacto directo</h3>
           <ul class="contact-list">
@@ -368,9 +365,8 @@
   </main>
 
   <!-- ============================================================
-       EL PIE DE LA PÁGINA
-       El final del cuento. El año (id="year") se actualiza solo
-       gracias a app.js, ¡como un reloj automático!
+       PIE DE PÁGINA
+       El año (id="year") se actualiza dinámicamente desde app.js.
        ============================================================ -->
   <footer class="footer">
     <div class="container footer-inner">
@@ -381,8 +377,8 @@
     </div>
   </footer>
 
-  <!-- Al final conectamos el "cerebro" de la página: app.js.
-       Va al último para que el HTML ya esté listo cuando despierte -->
+  <!-- Carga de app.js al final del documento para asegurar que el DOM
+       esté completamente construido antes de ejecutar la lógica -->
   <script src="app.js"></script>
 </body>
 </html>
