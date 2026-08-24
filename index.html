@@ -1,0 +1,388 @@
+<!-- ¡Hola! Este archivo es el ESQUELETO de la página web.
+     Aquí está todo lo que se ve: textos, botones y secciones.
+     Está escrito en HTML, el idioma que entienden los navegadores. -->
+
+<!-- Le dice al navegador: "esto es una página web moderna" -->
+<!DOCTYPE html>
+<!-- Empieza la página. lang="es" significa que está en español -->
+<html lang="es">
+<!-- El <head> es como la mochila: guarda instrucciones importantes
+     que NO se ven en la pantalla -->
+<head>
+  <!-- Permite usar tildes y la letra ñ sin que se vean raras -->
+  <meta charset="UTF-8">
+  <!-- Hace que la página se vea bien en celulares y tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Un resumen de la página que Google muestra cuando alguien busca -->
+  <meta name="description" content="Portafolio de Luciano Garrido, estudiante de Ingeniería en Informática en Duoc UC. Backend, bases de datos e inteligencia artificial.">
+  <!-- El nombre que aparece arriba, en la pestaña del navegador -->
+  <title>Luciano Garrido | Ingeniería en Informática</title>
+  <!-- Aquí le pedimos a Google unas letras bonitas para la página
+       (Sora para los títulos e Inter para el texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Conectamos el archivo de ESTILOS: los colores, las formas
+       y todo lo que hace que la página se vea bonita -->
+  <link rel="stylesheet" href="Styles.css">
+</head>
+<!-- El <body> es TODO lo que sí se ve en la pantalla -->
+<body>
+  <!-- ============================================================
+       LA BARRA DE ARRIBA (EL MENÚ)
+       Es como el control de un videojuego: siempre está arriba y
+       con un toque te lleva a cualquier parte de la página.
+       ============================================================ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <!-- El logo. Si lo tocas, te lleva al GitHub de Luciano
+           (su cuaderno de proyectos) -->
+      <a href="https://github.com/BlackCatVSC" target="_blank" rel="noopener" class="logo" aria-label="Perfil de GitHub de Luciano Garrido">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <span>BlackCat<span class="logo-accent">VSC</span></span>
+      </a>
+      <!-- Los botones del menú: cada uno es un teletransportador
+           que te lleva a una sección de la página -->
+      <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+        <a href="#habilidades" class="nav-link">Habilidades</a>
+        <a href="#proyectos" class="nav-link">Proyectos</a>
+        <a href="#experiencia" class="nav-link">Experiencia</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <!-- Botón para ir directo a la parte de contacto -->
+        <a href="#contacto" class="btn btn-primary btn-sm">Contáctame
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+        <!-- El botón de las tres rayitas: solo aparece en celulares
+             y sirve para abrir o cerrar el menú -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- <main> guarda todo el contenido principal de la página -->
+  <main>
+    <!-- ============================================================
+         SECCIÓN 1: INICIO (llamada "hero")
+         Es la portada del libro: lo primero que ves al entrar.
+         ============================================================ -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <!-- Una etiqueta (como un sticker) que dice qué estudia y dónde -->
+          <span class="badge">Ingeniería en Informática · Duoc UC</span>
+          <!-- El título GIGANTE con su nombre -->
+          <h1>Hola, soy <span class="accent">Luciano</span><br>construyo soluciones con datos, backend e IA.</h1>
+          <!-- Un texto corto que cuenta quién es y qué sabe hacer -->
+          <p class="hero-text">Estudiante de segundo año de Ingeniería en Informática en Duoc UC, con experiencia práctica en desarrollo backend, agentes de IA y arquitectura de microservicios. Futuro especialista en bases de datos.</p>
+          <!-- Los dos botones grandes de la portada -->
+          <div class="hero-buttons">
+            <!-- Este botón te lleva a ver sus proyectos -->
+            <a href="#proyectos" class="btn btn-primary">Ver mi trabajo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <!-- Este botón descarga su currículum (como su ficha de personaje) -->
+            <a href="CV-Luciano-Garrido.docx" download class="btn btn-ghost">Descargar CV
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </a>
+          </div>
+          <!-- Las tecnologías que sabe usar, mostradas como medallas
+               de videojuego. Cada una tiene el color de su marca -->
+          <div class="hero-tech">
+            <span class="hero-tech-title">Tecnologías con las que trabajo</span>
+            <ul class="tech-badges">
+              <li class="tech-badge" style="--tech:#ffd43b" title="Python">Py</li>
+              <li class="tech-badge" style="--tech:#f89820" title="Java">Jv</li>
+              <li class="tech-badge" style="--tech:#00758f" title="SQL">SQL</li>
+              <li class="tech-badge" style="--tech:#6db33f" title="Spring Boot">Sb</li>
+              <li class="tech-badge" style="--tech:#e8e8e8" title="Flask">Fl</li>
+              <li class="tech-badge" style="--tech:#2496ed" title="Docker">Dk</li>
+              <li class="tech-badge" style="--tech:#f05032" title="Git">Git</li>
+              <li class="tech-badge" style="--tech:#7c6cf5" title="IA">IA</li>
+            </ul>
+          </div>
+        </div>
+        <!-- El círculo donde va su foto.
+             Dato curioso: el archivo app.js busca la foto probando
+             varios nombres. Si no la encuentra, deja estas iniciales
+             "LG" para que nunca se vea un espacio vacío -->
+        <div class="hero-visual">
+          <div class="hero-photo" id="hero-photo">
+            <span class="hero-initials">LG</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 2: SOBRE MÍ
+         Aquí Luciano cuenta su historia, como el capítulo donde
+         conoces mejor al personaje principal.
+         ============================================================ -->
+    <section class="section" id="sobre-mi">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="badge">Sobre mí</span>
+          <h2>Apasionado por los datos y el backend</h2>
+          <p>Curso segundo año de Ingeniería en Informática en Duoc UC y elegí especializarme en <strong>bases de datos</strong>. Disfruto resolver problemas reales con software: desde un agente de IA que simplifica transacciones bancarias hasta un sistema de microservicios que digitaliza el inventario de fruterías que aún trabajan en papel.</p>
+          <p>Me mueven la matemática y la estadística, y las aplico para escribir código medible, testeado y seguro. En mi experiencia laboral en Duoc aprendí que la tecnología también es servicio: junto a un compañero recuperamos y formateamos más de 200 computadores que hoy usan escuelas que los necesitaban.</p>
+          <ul class="about-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              Especialización en bases de datos
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              Inglés nivel intermedio
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+              Matemática y estadística aplicadas
+            </li>
+          </ul>
+        </div>
+        <!-- Tarjetas con sus logros, como los números de un videojuego:
+             años de carrera, computadores recuperados, pruebas hechas... -->
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            </div>
+            <div><strong>2° año</strong><span>Ingeniería en Informática, Duoc UC</span></div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <div><strong>+200</strong><span>PCs recuperados para donación a escuelas</span></div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div><strong>133</strong><span>Tests de seguridad en mi agente de IA</span></div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div><strong>247</strong><span>Pruebas unitarias en MyMarket (equipo)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 3: HABILIDADES
+         Cada tarjeta es una categoría de "poderes": lenguajes,
+         inteligencia artificial, bases de datos... y cada chip
+         es una habilidad que domina.
+         ============================================================ -->
+    <section class="section section-alt" id="habilidades">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="badge">Habilidades</span>
+          <h2>Tecnologías que domino</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <h3>Lenguajes</h3>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Backend y APIs</h3>
+            <div class="chips">
+              <span class="chip">Flask</span><span class="chip">Spring Boot</span><span class="chip">APIs REST</span><span class="chip">Swagger / OpenAPI</span><span class="chip">Postman</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>IA y datos</h3>
+            <div class="chips">
+              <span class="chip">LangChain</span><span class="chip">GPT-4o</span><span class="chip">Prompt engineering</span><span class="chip">Estadística</span><span class="chip">Modelado relacional</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>DevOps y herramientas</h3>
+            <div class="chips">
+              <span class="chip">Docker</span><span class="chip">Git / GitHub Flow</span><span class="chip">Linux</span><span class="chip">Nginx</span><span class="chip">Render</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Bases de datos</h3>
+            <div class="chips">
+              <span class="chip">SQL</span><span class="chip">H2</span><span class="chip">Spring Data JPA</span><span class="chip">Cifrado en reposo</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <h3>Idiomas y transversales</h3>
+            <div class="chips">
+              <span class="chip">Español nativo</span><span class="chip">Inglés intermedio</span><span class="chip">Trabajo en equipo</span><span class="chip">Atención al cliente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 4: PROYECTOS
+         Sus dos creaciones más grandes, como mostrar tus mejores
+         dibujos pegados en el refrigerador.
+         ============================================================ -->
+    <section class="section" id="proyectos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="badge">Proyectos destacados</span>
+          <h2>Trabajo reciente</h2>
+        </div>
+        <div class="projects-grid">
+          <!-- PROYECTO 1: un robot asistente de banco hecho con
+               inteligencia artificial -->
+          <article class="project-card reveal">
+            <div class="project-cover cover-ai">
+              <span class="project-num">01</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M12 8V4m0 0h.01M8 4h8"></path><circle cx="9" cy="13" r="1"></circle><circle cx="15" cy="13" r="1"></circle><path d="M9 17h6"></path></svg>
+            </div>
+            <div class="project-body">
+              <h3>Agente IA BancoEstado</h3>
+              <p class="project-note">Proyecto académico ficticio, sin vínculo con BancoEstado.</p>
+              <p>Asistente virtual bancario con GPT-4o y LangChain: 16 herramientas de transacción, planificador de 14 intenciones, 6 capas de seguridad anti-inyección y dashboard de métricas en tiempo real.</p>
+              <ul class="project-tags">
+                <li>Python</li><li>Flask</li><li>LangChain</li><li>GPT-4o</li><li>Docker</li>
+              </ul>
+              <a class="project-link" href="https://github.com/BlackCatVSC/PRUEBA_IA" target="_blank" rel="noopener">Ver código
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+          <!-- PROYECTO 2: MyMarket, un sistema para ayudar a las
+               fruterías a dejar el papel y usar computadores -->
+          <article class="project-card reveal">
+            <div class="project-cover cover-market">
+              <span class="project-num">02</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1-5h16l1 5"></path><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"></path><path d="M4 9v11h16V9"></path><path d="M9 20v-6h6v6"></path></svg>
+            </div>
+            <div class="project-body">
+              <h3>MyMarket</h3>
+              <p class="project-note">Proyecto grupal · Desarrollo FullStack I.</p>
+              <p>Sistema de gestión de inventario para fruterías y verdulerías que dejan el papel: 10 microservicios Spring Boot + API Gateway, alertas por stock y vencimiento, 247 pruebas unitarias y despliegue en Render.</p>
+              <ul class="project-tags">
+                <li>Java 17</li><li>Spring Boot</li><li>Microservicios</li><li>Docker</li><li>Postman</li>
+              </ul>
+              <a class="project-link" href="https://github.com/yountek14/MyMarket" target="_blank" rel="noopener">Ver código
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 5: EXPERIENCIA
+         Una línea de tiempo: como el camino de una aventura que
+         muestra todo lo que ha hecho, paso a paso.
+         ============================================================ -->
+    <section class="section section-alt" id="experiencia">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="badge">Trayectoria</span>
+          <h2>Experiencia y formación</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2026 · Actualidad</span>
+              <h3>Ayudante de Servicios Digitales</h3>
+              <span class="timeline-place">Duoc UC, Puerto Montt</span>
+              <p>Apoyo técnico al equipo por horas trabajadas. Proyecto destacado: formateo y recuperación de más de 200 computadores en desuso junto a un compañero, destinados a donación para escuelas.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2024 · Actualidad</span>
+              <h3>Ingeniería en Informática</h3>
+              <span class="timeline-place">Duoc UC, Puerto Montt</span>
+              <p>Segundo año en curso. Ramos relevantes: programación, base de datos, POO, desarrollo fullstack y soluciones con IA. Especialización elegida: bases de datos.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">Ene — Feb 2025</span>
+              <h3>Monitor de actividades recreativas acuáticas</h3>
+              <span class="timeline-place">Pichidangui Wild</span>
+              <p>Supervisión y seguridad de participantes en actividades acuáticas, atención directa a personas y coordinación con el equipo en temporada de verano.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 6: CONTACTO
+         Como poner tu número en un cartel: aquí cualquiera puede
+         escribirle o llamarlo para trabajar juntos.
+         ============================================================ -->
+    <section class="section" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-cta reveal">
+          <span class="badge">Trabajemos juntos</span>
+          <h2>¿Tienes un proyecto o una oportunidad en mente?</h2>
+          <p>Estoy disponible para prácticas, ayudantías y proyectos freelance compatibles con mis estudios. Respondemos rápido, escríbeme.</p>
+          <a href="mailto:luc.garridos@duocuc.cl" class="btn btn-primary">Escríbeme
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+        <div class="contact-card reveal">
+          <h3>Contacto directo</h3>
+          <ul class="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <a href="mailto:luc.garridos@duocuc.cl">luc.garridos@duocuc.cl</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="tel:+56944371414">+56 9 4437 1414</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              <a href="https://github.com/BlackCatVSC" target="_blank" rel="noopener">github.com/BlackCatVSC</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Puerto Montt, Chile</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       EL PIE DE LA PÁGINA
+       El final del cuento. El año (id="year") se actualiza solo
+       gracias a app.js, ¡como un reloj automático!
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> Luciano Garrido · Puerto Montt, Chile</span>
+      <a href="#inicio" class="footer-top">Volver arriba
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Al final conectamos el "cerebro" de la página: app.js.
+       Va al último para que el HTML ya esté listo cuando despierte -->
+  <script src="app.js"></script>
+</body>
+</html>
